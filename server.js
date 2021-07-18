@@ -1,16 +1,18 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const cors = require('cors')
-require('dotenv').config()
+const { router } = require('./routes.js')
 
 app.use(cors())
+app.use(express.urlencoded({extended: false}))
 app.use(express.static('public'))
-app.get('/', (req, res) => {
+app.use(router)
+
+app.get('/', (_, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
-
-
-
 
 
 const listener = app.listen(process.env.PORT || 3000, () => {
