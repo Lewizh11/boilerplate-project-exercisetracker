@@ -51,7 +51,7 @@ const getLog = async (req, res) => {
   .filter(exercise => {
     if(from && to) {
       const fromDate = new Date(from).getTime()
-      const toDate = new Date(toDate).getTime()
+      const toDate = new Date(to).getTime()
       const exerciseDate = new Date(exercise.date).getTime()
 
       if(exerciseDate >= fromDate && exerciseDate <= toDate)
